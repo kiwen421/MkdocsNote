@@ -1,5 +1,3 @@
-author: fudonglai, AngelKitty, labuladong
-
 本页面将介绍递归与分治算法的区别与结合运用。
 
 ## 递归

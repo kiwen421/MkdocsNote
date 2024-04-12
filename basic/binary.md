@@ -28,6 +28,8 @@
 
 ### 实现
 
+<img src="images/binary_search_1.png" alt="二分查找的简单例子" style="zoom: 33%;" />
+
 ```cpp
 int binary_search(int start, int end, int key) {
   int ret = -1;  // 未搜索到数据返回-1下标
