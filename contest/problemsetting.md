@@ -1,5 +1,3 @@
-author: ouuan, Henry-ZHR, StudyingFather, ChungZH, xyf007
-
 ## 出题前的准备
 
 ### 具备一定的水平
@@ -107,8 +105,6 @@ OI 中的数学题与其它数学题的区别，也是体现 OI 本质的一个�
 -   [LaTeX 入门](../tools/latex.md#图表)
 -   [LaTeX 数学公式大全](https://www.luogu.com.cn/blog/IowaBattleship/latex-gong-shi-tai-quan)
 -   [LaTeX 各种命令，符号](https://blog.csdn.net/garfielder007/article/details/51646604)
-
-使用时请注意 [LaTeX 公式的格式要求](../intro/format.md)。
 
 ### 题目背景
 
@@ -291,7 +287,7 @@ OI 中的数学题与其它数学题的区别，也是体现 OI 本质的一个�
 
 需要特别提醒的是，在生成值域比随机函数返回值更大的数时，请 **不要** 使用 `rand() * rand()` 之类的写法，这样的写法生成的随机数非常不均匀。
 
-另外，出题时推荐使用 [testlib](../tools/testlib/generator.md) 来造数据，可以保证在不同平台上同一个种子生成的随机数相同，并且种子会依据命令行参数自动生成。
+另外，出题时推荐使用 testlib 来造数据，可以保证在不同平台上同一个种子生成的随机数相同，并且种子会依据命令行参数自动生成。
 
 #### 生成随机排列
 
@@ -503,7 +499,7 @@ checker 一般使用 testlib 编写。由于 checker 要应对各种各样的不
 
 ### Polygon
 
-Polygon 是一个功能非常强大的多人合作出题平台，可以作为在任何网站（使用 package 功能导出到不支持 Polygon 的网站）多人合作出题的首选方案，单人出题（尤其是在不同设备上出题）时也是很不错的选择，使用方法参见 [Polygon 简介](../tools/polygon.md)。
+Polygon 是一个功能非常强大的多人合作出题平台，可以作为在任何网站（使用 package 功能导出到不支持 Polygon 的网站）多人合作出题的首选方案，单人出题（尤其是在不同设备上出题）时也是很不错的选择，使用方法参见 Polygon。
 
 ### Codeforces
 

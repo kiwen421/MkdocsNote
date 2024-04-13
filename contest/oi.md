@@ -1,5 +1,3 @@
-author: Ir1d, Planet6174, abc1763613206, StudyingFather, cjsoft, Marcythm, luoguyuntianming, ChungZH, Xeonacid, YZircon, i-Yirannn, H-J-Granger, NachtgeistW, YuzhenQin, Andycode3759
-
 ## 赛事简介
 
 **信息学奥林匹克竞赛**（英语：Olympiad in Informatics，简称：OI）是一门在中学生中广泛开展的学科竞赛，和物理、数学等竞赛性质相同。OI 考察的内容是参赛者运用算法、数据结构和数学知识，通过编写计算机程序解决实际问题的能力。
@@ -38,6 +36,11 @@ CSP-J/S 第二轮、NOIP、省选、NOI 都是 OI 赛制。
 
 APIO、IOI 都是 IOI 赛制。目前国内比赛也在逐渐向 IOI 赛制靠拢。
 
+### ICPC 赛制
+
+又称 ACM 赛制，ACM-ICPC 赛制。每题提交后都有反馈，每道题必须通过了所有的测试点才算通过。每道题不限制提交次数，未通过会有罚时。得分以最后一次提交为准。赛时可以看到实时排名，按通过题数排名，通过题数相同的情况下按照答题时间+罚时来排名。
+ICPC，CCPC，AtCoder ABC/ARC/AGC，LeetCode 周赛，牛客小白赛，传智杯都是 ICPC 赛制。
+
 ### Codeforces (CF) 赛制
 
 [Codeforces](https://codeforces.com) 是一个在线评测系统，会定期举办比赛。
@@ -45,6 +48,19 @@ APIO、IOI 都是 IOI 赛制。目前国内比赛也在逐渐向 IOI 赛制靠�
 它的比赛特点是在比赛过程中只测试一部分数据（Pretests），而在比赛结束后返回完整的所有测试点的测试结果（System Tests）。比赛时可以多次提交，允许 Hack 别人的代码（此处 Hack 的意思是提交一个测试数据，使得别人的代码无法给出正确答案）。如果想要 Hack，选手必须要锁定自己的代码（换言之，比赛时无法重新提交该题）。Hack 时不允许将选手程序拷贝到本地进行测试，源代码会被转换成图片。
 
 Codeforces 同时提供另外一种赛制，称作扩展 ICPC（Extended ICPC 或 ICPC+）。在这一赛制中，在比赛过程中会测试全部数据，但比赛结束以后会有 12 小时的全网 Hack 时间。Hack 时允许将选手程序拷贝到本地进行测试。
+
+### exICPC 赛制
+
+Codeforces 创造的赛制，别名很多，ex 是拓展、扩展的意思。因此，其他规则与 ICPC 赛制一样，但是解决问题所得的分数是由该题当前的分数减去不成功的提交次数乘 50。此外，比赛结束后还会有 12 小时的全网 hack 时间。
+Educational Codeforces Round 是 exICPC 赛制。
+
+
+
+### 乐多赛制
+
+洛谷创造的赛制。比赛时可以看到结果。对于一道题的得分，计算为 $s * 0.95^{t-1}$，其中 $s$ 为分数，$t$ 为提交次数，最低得分为原来的 70%，之后再提交不会因为提交次数扣分。
+
+
 
 ## 主要比赛
 
@@ -145,176 +161,3 @@ USACO 或许是国内选手最熟悉的外国 OI 竞赛（可能也是中文题�
 -   铂金组，适合有着扎实的算法设计能力的选手，铂金组可以帮助他们以复杂且更开放的问题来挑战自我。
 
 在国内，目前 USACO 题目最齐全的 OJ 平台是洛谷。
-
-### 波兰：POI
-
-官网地址：<https://oi.edu.pl/>
-
-官方提交地址：<https://szkopul.edu.pl/p/default/problemset/>
-
-POI 是不少省选选手最常刷的外国 OI 比赛。
-
-根据 <http://main.edu.pl/en/> 的描述，POI 的流程如下：
-
--   第一轮：五题，网络赛，公开赛；
--   第二轮：包含一场练习赛，和两场正式比赛；
--   第三轮：赛制同上。
--   ONTAK：POI 训练营（类似国内的集训队）。
-
-另有 PA，大意为「算法大战」。
-
-目前在国内 OJ 中，POI 题目最全的是 BZOJ。
-
-### 克罗地亚：COCI
-
-官网地址（英文）：<http://www.hsin.hr/coci/>
-
-官网地址（克罗地亚语）：<http://www.hsin.hr/honi/>
-
-难度跨度很大的比赛，大约是从普及 - 到省选 -。
-
-以往 COCI 所有的题目均提供题目、数据、题解和标程。2017 年底起，COCI 的题解和标程停止了更新。2019-2020 赛季重新开始更新题解和标程。
-
-洛谷、BZOJ 和 LibreOJ 都有少量的 COCI 题目。
-
-### 日本：JOI
-
-官网地址：<https://www.ioi-jp.org/>
-
-JOI（日文：日本情報オリンピック，中文：日本信息学奥赛）所有的题目都提供题目、数据、题解和标程。近两年的 JOI 决赛和春训营提供了英语题面，但并没有英语题解。历年的 JOI Open 都提供了英语版题面和题解。
-
-JOI 的流程：
-
--   预赛（予選）
--   决赛（本選/JOI Final）
--   春训营（春季トレーニング合宿/JOI Spring Camp/JOISC）
--   公开赛（通信教育/JOI Open Contest）
-
-预赛难度较低，自 2019/2020 赛季起，预赛分为多轮。JOI Final 的难度从提高 - 到 提高 + 左右。JOISC 和 JOI Open 的题目的难度从提高到 NOI - 不等。
-
-绝大部分 JOI 题可以前往 [AtCoder](https://atcoder.jp/) 提交。你可以在 JOI 官网或者 AtCoder 上找到更多的 JOI 题（日文题面）。
-
-目前 LibreOJ 和 BZOJ 有近些年的 JOI Final、JOISC 和 JOI Open 的题目。
-
-### 俄罗斯：ROI
-
-官网地址：<http://neerc.ifmo.ru/school/archive/index.html>
-
-在线提交地址：<https://contest.yandex.ru/roiarchive/> 和 Codeforces（部分）。
-
-ROI（俄文：олимпиадная информатика，中文：俄罗斯信息学奥赛）是俄罗斯的信息学竞赛。
-
-流程：
-
--   市级比赛（Municipal Stage/Муниципальный этап）
--   州级比赛（Regional Stage/Региональный этап）
--   决赛（Final Stage/Заключительный этап）
-
-目前 LibreOJ 有近几年的 ROI 决赛题的译文。
-
-除此之外，俄罗斯较大型的、面向中学生的比赛还有：
-
--   信息学网络奥赛（俄文：Интернет-олимпиады по информатике）
-    -   官网地址：<http://neerc.ifmo.ru/school/io/index.html>
-    -   该比赛由 ROI 出题人举办。
--   全国中学生团队信息学竞赛（俄文：Всероссийской командной олимпиады школьников）
-    -   官网地址：<http://neerc.ifmo.ru/school/russia-team/index.html>
-    -   该比赛的预选赛 Moscow Team Olympiad 可以在 Codeforces 上提交。
--   Innopolis Open
-    -   官网地址 <https://olymp.innopolis.ru/en/ooui/information/>
--   中学生编程公开赛（Открытая олимпиада школьников по программированию）
-    -   官网地址：<https://olympiads.ru/zaoch/>
-    -   官网称该比赛对标 ROI。
-
-### 加拿大：CCC & CCO
-
-CCC（英文：Canadian Computing Competition），CCO（英文：Canadian Computing Olympiad），可在其 [官网](https://cemc.math.uwaterloo.ca/contests/past_contests.html#ccc) 查询历届的信息和试题等。
-
-在 DMOJ 上可以提交 [CCC](https://dmoj.ca/problems/?category=4) 和 [CCO](https://dmoj.ca/problems/?category=24)，该 OJ 上还有 CCC 题解。
-
-CCC Junior/Senior 贴近 NOIP 普及组/提高组难度。CCO 想要拿到金牌可能得有 NOI 银牌的水平。
-
-### 新加坡：NOI SG
-
-官网地址：<https://noisg.comp.nus.edu.sg/noi/>
-
-全称 Singapore National Olympiad in Informatics，在新加坡国内语境且不引起歧义的情况下也作 NOI。赛制上分为 Online Qualification Contest（在线资格赛）和 Final Contest（全国决赛）。在线资格赛以学校为单位报名参加，选手在本校参赛，通过网络进行远程提交。资格赛成绩只在校内排名，前 5 名且非零分选手有资格作为校代表队参加全国决赛。
-
-目前国内 OJ 对于 NOI SG 的题目收录比较匮乏，可以在 [官方的 GitHub 帐号](https://github.com/noisg) 上找到历年题面、测试数据和官方标准程序。
-
-### 台湾地区：資訊奧林匹亞競賽
-
-台湾地区把 OI 中的 informatics 翻译成「資訊」而非大陆通用的翻译「信息」。
-
-台湾地区的选手如果想参加 IOI，需要经过这几轮比赛：
-
--   區域資訊學科能力競賽
--   全國資訊學科能力競賽
--   資訊研習營（TOI）
-
-### 其他国家
-
--   法国与澳大利亚：FARIO：<http://orac.amt.edu.au/cgi-bin/train/hub.pl>
-
-    -   难度与 NOI 类似。
-
--   英国：British Informatics Olympiad：<https://www.olympiad.org.uk/>
-
-    -   难度太低。
-
--   捷克：Matematická olympiáda–kategorie P：<http://mo.mff.cuni.cz/p/archiv.html>
-
--   罗马尼亚：Olimpiada Nationala de Informatica：<http://olimpiada.info/>
-    -   题面、测试数据、题解请在含有 Subiecte 字样的标签页中寻找。
-
-## 其它国际 OI 竞赛
-
-### BalticOI
-
-**BalticOI** 面向的是波罗的海周边各国。BalticOI 2018 的参赛国有立陶宛、波兰、爱沙尼亚、芬兰等 9 国。题目难度大。
-
-除了 2017 年，BalticOI 每年都公开题面、测试数据和题解。BalticOI 没有一个固定的官网，每年的主办方都会新建一个网站。历年的官网地址见 [帖子](https://loj.ac/article/416)。
-
-目前 LibreOJ 有近十年的 BalticOI 题。
-
-### BalkanOI
-
-**BalkanOI** 面向巴尔干地区周边各国。BalkanOI 2018 的参赛国有罗马尼亚、希腊、保加利亚、塞尔维亚等 12 国。题目难度大。
-
-BalkanOI 只有某几年公开题面、测试数据和题解，官网地址见 [帖子](https://loj.ac/article/416)。
-
-### CEOI
-
-CEOI 2018 的参赛国与上面两个比赛有部分重叠，包括波兰、罗马尼亚、格鲁吉亚、克罗地亚等国。题目难度大。
-
-CEOI 每年都公开题面、测试数据和题解，官网地址见 [帖子](https://loj.ac/article/416)。
-
-在国内 OJ 中，BZOJ 的 CEOI 题相对最齐。
-
-### eJOI
-
-**eJOI** 全名 European Junior Olympiad in Informatics。参赛国包含俄罗斯、亚美尼亚、保加利亚、波兰等国。题目难度较大。
-
-eJOI 每年都公开题面、测试数据和题解，官网地址见 [帖子](https://loj.ac/article/416)。
-
-### ISIJ
-
-**ISIJ** 全名 International School in Informatics "Junior"，中文名「国际初中生信息学竞赛」。
-
-官网地址：<http://isi-junior.com/>
-
-### NOI
-
-???+ warning
-    此处介绍的不是「全国信息学奥林匹克竞赛」。
-
-**NOI** 全名 Nordic Olympiads in Informatics。
-
-官网地址：<http://nordic.progolymp.se>
-
-近两年才开始举办的比赛，面向北欧各国。
-
-## 参考资料
-
--   [ICPC/CCPC 赛事与赛制](./icpc.md)
--   [「翻译组」一些大洲级 OI 比赛的地址](https://loj.ac/article/416)

@@ -1,5 +1,3 @@
-author: NachtgeistW, Ir1d, Xeonacid, H-J-Granger, abc1763613206, YuzhenQin
-
 ## 赛事介绍
 
 ### ICPC
