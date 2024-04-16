@@ -1,7 +1,3 @@
-author: Ir1d, sshwy, Enter-tainer, H-J-Granger, ouuan, GavinZhengOI, hsfzLZH1, xyf007
-
-[静态区间 k 小值（POJ 2104 K-th Number）](http://poj.org/problem?id=2104) 的问题可以用 [权值线段树](./persistent-seg.md) 在 $O(n\log n)$ 的时间复杂度内解决。
-
 如果区间变成动态的呢？即，如果还要求支持一种操作：单点修改某一位上的值，又该怎么办呢？
 
 ??? note " 例题 [二逼平衡树（树套树）](https://loj.ac/problem/106)"

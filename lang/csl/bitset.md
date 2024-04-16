@@ -1,5 +1,3 @@
-author: i-Yirannn, Xeonacid, ouuan
-
 ## 介绍
 
 `std::bitset` 是标准库中的一个存储 `0/1` 的大小不可变容器。严格来讲，它并不属于 STL。
@@ -195,162 +193,49 @@ $f(i,j)$ 表示前 $i$ 个数的平方和能否为 $j$，那么 $f(i,j)=\bigvee\
     #include <cstdio>
     #include <iostream>
     
-    using namespace std;
-    
-    const int N = 101;
-    const int W = 64;
-    
-    bool f[N * N * N];
-    
-    int main() {
-      int n, i, j, k, a, b, l = 0, r = 0, ans = 0;
-    
-      scanf("%d", &n);
-    
-      f[0] = true;
-    
-      for (i = 1; i <= n; ++i) {
-        scanf("%d%d", &a, &b);
-        l += a * a;
-        r += b * b;
-    
-        for (j = r; j >= l; --j) {
-          f[j] = false;
-    
-          for (k = a; k <= b; ++k) {
-            if (j - k * k < l - a * a) break;
-    
-            if (f[j - k * k]) {
-              f[j] = true;
-              break;
-            }
-          }
+~~~cpp
+using namespace std;
+
+const int N = 101;
+const int W = 64;
+
+bool f[N * N * N];
+
+int main() {
+  int n, i, j, k, a, b, l = 0, r = 0, ans = 0;
+
+  scanf("%d", &n);
+
+  f[0] = true;
+
+  for (i = 1; i <= n; ++i) {
+    scanf("%d%d", &a, &b);
+    l += a * a;
+    r += b * b;
+
+    for (j = r; j >= l; --j) {
+      f[j] = false;
+
+      for (k = a; k <= b; ++k) {
+        if (j - k * k < l - a * a) break;
+
+        if (f[j - k * k]) {
+          f[j] = true;
+          break;
         }
       }
-    
-      for (i = l; i <= r; ++i) ans += f[i];
-    
-      printf("%d", ans);
-    
-      return 0;
     }
-    ```
+  }
 
-### [CF1097F Alex and a TV Show](https://codeforces.com/contest/1097/problem/F)
+  for (i = l; i <= r; ++i) ans += f[i];
 
-#### 题意
+  printf("%d", ans);
 
-给你 $n$ 个可重集，四种操作：
+  return 0;
+}
+```
+~~~
 
-1.  把某个可重集设为一个数。
-2.  把某个可重集设为另外两个可重集加起来。
-3.  把某个可重集设为从另外两个可重集中各选一个数的 $\gcd$。即：$A=\{\gcd(x,y)|x\in B,y\in C\}$。
-4.  询问某个可重集中某个数的个数，**在模 2 意义下**。
-
-可重集个数 $10^5$，操作个数 $10^6$，值域 $7000$。
-
-#### 做法
-
-看到「在模 $2$ 意义下」，可以想到用 `bitset` 维护每个可重集。
-
-这样的话，操作 $1$ 直接设，操作 $2$ 就是异或（因为模 $2$），操作 $4$ 就是直接查，但 .. 操作 $3$ 怎么办？
-
-我们可以尝试维护每个可重集的所有约数构成的可重集，这样的话，操作 $3$ 就是直接按位与。
-
-我们可以把值域内每个数的约数构成的 `bitset` 预处理出来，这样操作 $1$ 就解决了。操作 $2$ 仍然是异或。
-
-现在的问题是，如何通过一个可重集的约数构成的可重集得到该可重集中某个数的个数。
-
-令原可重集为 $A$，其约数构成的可重集为 $A'$，我们要求 $A$ 中 $x$ 的个数，用 [莫比乌斯反演](../../math/number-theory/mobius.md) 推一推：
-
-$$
-\begin{aligned}&\sum\limits_{i\in A}[\frac i x=1]\\=&\sum\limits_{i\in A}\sum\limits_{d|\frac i x}\mu(d)\\=&\sum\limits_{d\in A',x|d}\mu(\frac d x)\end{aligned}
-$$
-
-由于是模 $2$ 意义下，$-1$ 和 $1$ 是一样的，只用看 $\frac d x$ 有没有平方因子即可。所以，可以对值域内每个数预处理出其倍数中除以它不含平方因子的位置构成的 `bitset`，求答案的时候先按位与再 `count()` 就好了。
-
-这样的话，单次询问复杂度就是 $O(\frac v w)$（$v=7000,\,w=32$）。
-
-至于预处理的部分，$O(v\sqrt v)$ 或者 $O(v^2)$ 预处理比较简单，$\log$ 预处理就如下面代码所示，复杂度为调和级数，所以是 $O(v\log v)$。
-
-??? "参考代码"
-    ```cpp
-    #include <bitset>
-    #include <cctype>
-    #include <cmath>
-    #include <cstdio>
-    #include <iostream>
-    
-    using namespace std;
-    
-    int read() {
-      int out = 0;
-      char c;
-      while (!isdigit(c = getchar()))
-        ;
-      for (; isdigit(c); c = getchar()) out = out * 10 + c - '0';
-      return out;
-    }
-    
-    const int N = 100005;
-    const int M = 1000005;
-    const int V = 7005;
-    
-    bitset<V> pre[V], pre2[V], a[N], mu;
-    int n, m, tot;
-    char ans[M];
-    
-    int main() {
-      int i, j, x, y, z;
-    
-      n = read();
-      m = read();
-    
-      mu.set();
-      for (i = 2; i * i < V; ++i) {
-        for (j = 1; i * i * j < V; ++j) {
-          mu[i * i * j] = 0;
-        }
-      }
-      for (i = 1; i < V; ++i) {
-        for (j = 1; i * j < V; ++j) {
-          pre[i * j][i] = 1;
-          pre2[i][i * j] = mu[j];
-        }
-      }
-    
-      while (m--) {
-        switch (read()) {
-          case 1:
-            x = read();
-            y = read();
-            a[x] = pre[y];
-            break;
-          case 2:
-            x = read();
-            y = read();
-            z = read();
-            a[x] = a[y] ^ a[z];
-            break;
-          case 3:
-            x = read();
-            y = read();
-            z = read();
-            a[x] = a[y] & a[z];
-            break;
-          case 4:
-            x = read();
-            y = read();
-            ans[tot++] = ((a[x] & pre2[y]).count() & 1) + '0';
-            break;
-        }
-      }
-    
-      printf("%s", ans);
-    
-      return 0;
-    }
-    ```
 
 ### 与埃氏筛结合
 
@@ -399,6 +284,7 @@ $$
 ??? "参考代码"
     需安装 [google/benchmark](https://github.com/google/benchmark)。
     
+
     ```cpp
     #include <benchmark/benchmark.h>
     #include <bits/stdc++.h>
@@ -588,16 +474,3 @@ $$
 
 `bitset` 与树分块结合可以解决一类求树上多条路径信息并的问题，详见 [数据结构/树分块](../../ds/tree-decompose.md)。
 
-### 与莫队结合
-
-详见 [杂项/莫队配合 bitset](../../misc/mo-algo-with-bitset.md)。
-
-### 计算高维偏序
-
-详见 [FHR 课件](https://github.com/OI-wiki/libs/blob/master/lang/csl/FHR-分块bitset求高维偏序.pdf)。
-
-## 参考资料与注释
-
-[^bitset1]: [libstdc++: SGI STL extensions](https://gcc.gnu.org/onlinedocs/libstdc++/libstdc++-html-USERS-4.4/a00994.html#g32541eb0d6581b915af48b5a51006dff)
-
-[^bitset2]: [libstdc++: std::bitset<\_Nb> Class Template Reference](https://gcc.gnu.org/onlinedocs/libstdc++/libstdc++-html-USERS-4.4/a00219.html)

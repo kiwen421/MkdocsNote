@@ -26,20 +26,3 @@
 
 考虑上文提到的性质，我们可以使用 [DFS（图论）](./dfs.md) 或者 [BFS](./bfs.md) 来遍历这张图。如果发现了奇环，那么就不是二分图，否则是。
 
-## 应用
-
-### 二分图最大匹配
-
-详见 [二分图最大匹配](./graph-matching/bigraph-match.md) 页面。
-
-### 二分图最大权匹配
-
-详见 [二分图最大权匹配](./graph-matching/bigraph-weight-match.md) 页面。
-
-### 一般图最大匹配
-
-详见 [一般图最大匹配](./graph-matching/general-match.md) 页面。
-
-### 一般图最大权匹配
-
-详见 [一般图最大权匹配](./graph-matching/general-weight-match.md) 页面。

@@ -1,5 +1,3 @@
-author:ouuan, Backl1ght, billchenchina, CCXXXI, ChickenHu, ChungZH, cjsoft, countercurrent-time, diauweb, Early0v0, Enter-tainer, EtaoinWu, H-J-Granger, H-Shen, Henry-ZHR, HeRaNO, hsfzLZH1, huaruoji, iamtwz, imp2002, Ir1d, kenlig, Konano, Lyccrius, Marcythm, Menci, NachtgeistW, PeterlitsZo, psz2007, shuzhouliu, SkqLiao, sshwy, SukkaW, therehello, TrisolarisHD, ttzztztz, vincent-163, WAAutoMaton, Hunter19019
-
 ## 定义
 
 最近公共祖先简称 LCA（Lowest Common Ancestor）。两个节点的最近公共祖先，就是这两个点的公共祖先里面，离根最远的那个。
@@ -85,85 +83,7 @@ Tarjan 算法需要初始化并查集，所以预处理的时间复杂度为 $O(
     --8<-- "docs/graph/code/lca/lca_tarjan.cpp"
     ```
 
-### 用欧拉序列转化为 RMQ 问题
 
-#### 定义
-
-对一棵树进行 DFS，无论是第一次访问还是回溯，每次到达一个结点时都将编号记录下来，可以得到一个长度为 $2n-1$ 的序列，这个序列被称作这棵树的欧拉序列。
-
-在下文中，把结点 $u$ 在欧拉序列中第一次出现的位置编号记为 $pos(u)$（也称作节点 $u$ 的欧拉序），把欧拉序列本身记作 $E[1..2n-1]$。
-
-#### 过程
-
-有了欧拉序列，LCA 问题可以在线性时间内转化为 RMQ 问题，即 $pos(LCA(u, v))=\min\{pos(k)|k\in E[pos(u)..pos(v)]\}$。
-
-这个等式不难理解：从 $u$ 走到 $v$ 的过程中一定会经过 $LCA(u,v)$，但不会经过 $LCA(u,v)$ 的祖先。因此，从 $u$ 走到 $v$ 的过程中经过的欧拉序最小的结点就是 $LCA(u, v)$。
-
-用 DFS 计算欧拉序列的时间复杂度是 $O(n)$，且欧拉序列的长度也是 $O(n)$，所以 LCA 问题可以在 $O(n)$ 的时间内转化成等规模的 RMQ 问题。
-
-#### 实现
-
-???+ note "参考代码"
-    ```cpp
-    int dfn[N << 1], pos[N], tot, st[30][(N << 1) + 2],
-        rev[30][(N << 1) + 2];  // rev表示最小深度对应的节点编号
-    
-    void dfs(int cur, int dep) {
-      dfn[++tot] = cur;
-      depth[tot] = dep;
-      pos[cur] = tot;
-      for (int i = head[t]; i; i = side[i].next) {
-        int v = side[i].to;
-        if (!pos[v]) {
-          dfs(v, dep + 1);
-          dfn[++tot] = cur, depth[tot] = dep;
-        }
-      }
-    }
-    
-    void init() {
-      for (int i = 2; i <= tot + 1; ++i)
-        lg[i] = lg[i >> 1] + 1;  // 预处理 lg 代替库函数 log2 来优化常数
-      for (int i = 1; i <= tot; i++) st[0][i] = depth[i], rev[0][i] = dfn[i];
-      for (int i = 1; i <= lg[tot]; i++)
-        for (int j = 1; j + (1 << i) - 1 <= tot; j++)
-          if (st[i - 1][j] < st[i - 1][j + (1 << i - 1)])
-            st[i][j] = st[i - 1][j], rev[i][j] = rev[i - 1][j];
-          else
-            st[i][j] = st[i - 1][j + (1 << i - 1)],
-            rev[i][j] = rev[i - 1][j + (1 << i - 1)];
-    }
-    
-    int query(int l, int r) {
-      int k = lg[r - l + 1];
-      return st[k][l] < st[k][r + 1 - (1 << k)] ? rev[k][l]
-                                                : rev[k][r + 1 - (1 << k)];
-    }
-    ```
-
-当我们需要查询某点对 $(u, v)$ 的 LCA 时，查询区间 $[\min\{pos[u], pos[v]\}, \max\{pos[u], pos[v]\}]$ 上最小值的所代表的节点即可。
-
-若使用 ST 表来解决 RMQ 问题，那么该算法不支持在线修改，预处理的时间复杂度为 $O(n\log n)$，每次查询 LCA 的时间复杂度为 $O(1)$。
-
-### 树链剖分
-
-LCA 为两个游标跳转到同一条重链上时深度较小的那个游标所指向的点。
-
-树链剖分的预处理时间复杂度为 $O(n)$，单次查询的时间复杂度为 $O(\log n)$，并且常数较小。
-
-### [动态树](../ds/lct.md)
-
-设连续两次 [access](../ds/lct.md#access) 操作的点分别为 `u` 和 `v`，则第二次 [access](../ds/lct.md#access) 操作返回的点即为 `u` 和 `v` 的 LCA.
-
-在无 link 和 cut 等操作的情况下，使用 link cut tree 单次查询的时间复杂度为 $O(\log n)$。
-
-### 标准 RMQ
-
-前面讲到了借助欧拉序将 LCA 问题转化为 RMQ 问题，其瓶颈在于 RMQ。如果能做到 $O(n) \sim O(1)$ 求解 RMQ，那么也就能做到 $O(n) \sim O(1)$ 求解 LCA。
-
-注意到欧拉序满足相邻两数之差为 1 或者 -1，所以可以使用 $O(n) \sim O(1)$ 的 [加减 1RMQ](../topic/rmq.md#加减-1rmq) 来做。
-
-时间复杂度 $O(n) \sim O(1)$，空间复杂度 $O(n)$，支持在线查询，常数较大。
 
 #### 例题 [Luogu P3379【模板】最近公共祖先（LCA）](https://www.luogu.com.cn/problem/P3379)
 

@@ -423,18 +423,7 @@ gen 100000 100000 > 5.in
 > 4.  任何一行的开头和末尾都没有空白字符。
 > 5.  连续的空格不超过 1 个。
 
-## Special Judge
 
-[SPJ 编写教程](../tools/special-judge.md)
-
-输出方案题和输出浮点数题是两种较为常见的需要使用 SPJ 的题型，其它题目视情况也需要使用 SPJ。在 CF 上，所有题目都必须使用基于 testlib 的 checker，例如：题目要求输出若干个整数时，使用 testlib 自带的 ncmp checker，选手可以任意输出空白字符（既可以空格也可以换行）。
-
-checker 一般使用 testlib 编写。由于 checker 要应对各种各样的不合法输出，需要极强的鲁棒性，不使用 testlib 是很难写好 checker 的。
-
-编写 checker 需要注意以下两点：
-
-1.  你需要应对各种不合法的输出，因此，请检查读入的每个变量是否在合法范围中（`readInt(minvalue, maxvalue)`）。例如：读入一个在 check 过程中会作为数组下标的变量时必须检查其范围，否则可能引发数组越界，有时这会导致 RE，有时则可能判为 AC。
-2.  原则上 checker 中不应检查空白字符（即，不应使用 `readSpace()`、`readEoln()`、`readEof()`，值得一提的是，testlib 会自动检查是否有多余的输出）。
 
 ## 题解
 
@@ -494,97 +483,3 @@ checker 一般使用 testlib 编写。由于 checker 要应对各种各样的不
 > 我要从五道题里选六道，我也很无奈啊。
 >
 > ——CTS2019 组题人给出的理由，没有收到足够多的题目投稿
-
-## 出题平台
-
-### Polygon
-
-Polygon 是一个功能非常强大的多人合作出题平台，可以作为在任何网站（使用 package 功能导出到不支持 Polygon 的网站）多人合作出题的首选方案，单人出题（尤其是在不同设备上出题）时也是很不错的选择，使用方法参见 Polygon。
-
-### Codeforces
-
-Codeforces 是全球最著名的算法竞赛网站之一，题目质量较高，非常适合有一定出题经验并且想进一步提升出题水平、想要出一套高质量题目的出题人。不足之处是审核速度较慢（一般要几个月），但你也可以在审核期间就开始题目的准备（虽然有题目被否掉导致准备白费了的风险）。
-
-#### 出题资格
-
--   蓝名且参加过至少 25 场 rated 比赛；
--   紫名且参加过至少 15 场 rated 比赛；
--   橙名且参加过至少 5 场 rated 比赛；
--   红名或黑红名。
-
-#### 提交比赛申请
-
-有了出题资格后，在侧边栏可以看到 [Propose a contest/problems](http://codeforces.com/proposals/new-contest) 按钮。
-
-点进去之后，先写一份 contest proposal（在 PROPOSE A CONTEST 里写），然后再写 problem proposal 并添加进比赛里。
-
-题目决定好之后，就可以将 contest proposal open to review（提交审核）了。
-
-#### 在 Polygon 上准备题目
-
-参考 [Polygon 简介](../tools/polygon.md)。
-
-#### 与管理之间的联系
-
-与管理联系有两个作用：
-
-1.  加快审核速度。
-2.  进入准备阶段后管理会提供建议和帮助。
-
-正规的联系方式是在 proposal system 中以 proposal 的形式提交申请，管理开始审核之后以 comment 的形式在 proposal 的下方进行讨论。
-
-实际上，如果 proposal 长时间没有过审，可以考虑私信联系管理（其实 CF 上写了 "Don't send private messages or emails to coordinators"，但 300iq 在 [评论](http://codeforces.com/blog/entry/64077#comment-478933) 中表示可以私信他）。
-
-### Comet OJ
-
-[Comet OJ 链接](https://www.cometoj.com/)
-
-已经不再活跃（截至 2021 年 11 月，最后一场比赛是 2020 年 1 月的）。
-
-出题申请：<https://info.cometoj.com/contests/Questionnaire_IssuerInfo/>
-
-### CodeChef
-
-印度的算法竞赛平台，有三种赛制：10 天且带 challenge 的 Long Challenge，2.5h 类 ICPC 的 Cook-Off，3h 类 IOI 的 LunchTime。
-
-出题 FAQ：<https://www.codechef.com/wiki/faq-problem-setters>
-
-出题指南：<https://www.codechef.com/problemsetting>
-
-### AtCoder
-
-日本的算法竞赛平台，出题联系方式：<contest@atcoder.jp>。
-
-### UOJ & LOJ
-
-比赛不多的国内 OJ。
-
-### 洛谷
-
-#### 个人公开赛
-
-在「我的题库」中出题并提交比赛申请。
-
-#### 团队公开赛
-
-在团队页面中出题并提交比赛申请。
-
-## 参考资料
-
-1.  [vfk《UOJ 精神之源流》][1]
-
-2.  [王天懿《论偏题的危害》][2]
-
-3.  [CF 出题人须知][3]（[国内可访问的图片版](https://github.com/OI-wiki/libs/blob/master/topic/rules.jpg)）
-
-4.  [CF 出题人的自我修养][4]
-
-本文由作者本人自 [ouuan 的出题规范](https://ouuan.github.io/post/ouuan-的出题规范/) 搬运而来并有所修改、补充。
-
-[1]: https://vfleaking.blog.uoj.ac/blog/909 "vfk《UOJ 精神之源流》"
-
-[2]: https://github.com/OI-wiki/libs/blob/master/topic/7-%E7%8E%8B%E5%A4%A9%E6%87%BF-%E8%AE%BA%E5%81%8F%E9%A2%98%E7%9A%84%E5%8D%B1%E5%AE%B3.ppt "王天懿《论偏题的危害》"
-
-[3]: https://docs.google.com/document/d/e/2PACX-1vRhazTXxSdj7JEIC7dp-nOWcUFiY8bXi9lLju-k6vVMKf4IiBmweJoOAMI-ZEZxatXF08I9wMOQpMqC/pub "CF 出题人须知"
-
-[4]: https://github.com/OI-wiki/libs/blob/master/topic/CF%E5%87%BA%E9%A2%98%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB.md "CF 出题人的自我修养"

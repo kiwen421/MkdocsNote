@@ -145,9 +145,9 @@ Carmichael 函数有如下性质：
     ??? note "证明"
         该定理等价于：
         
-        若模 $n=p^r$ 有 [原根](./primitive-root.md)，则 $\lambda(n)=\varphi(n)$，否则 $\lambda(n)=\dfrac{1}{2}\varphi(n)$.
+        若模 $n=p^r$ 有 原根，则 $\lambda(n)=\varphi(n)$，否则 $\lambda(n)=\dfrac{1}{2}\varphi(n)$.
         
-        当模 $p^r$ 有原根时，由 [原根存在定理](./primitive-root.md#原根存在定理) 可知命题成立。否则 $p=2$ 且 $r\geq 3$，我们有：
+        当模 $p^r$ 有原根时，由 原根存在定理 可知命题成立。否则 $p=2$ 且 $r\geq 3$，我们有：
         
         $$
         \lambda\left(2^r\right)\mid 2^{r-2}

@@ -1,5 +1,3 @@
-author: iamtwz, aofall, CCXXXI, CoelacanthusHex, Great-designer, Marcythm, Persdre, shuzhouliu, Tiphereth-A, Xeonacid
-
 ## 定义
 
 ???+ note "同余方程"
@@ -251,12 +249,9 @@ $$
 
 且若 $(9)$ 有解，则解数为 $n$.
 
-???+ note
-    方程 $(9)$ 解集的具体结构可参见 [k 次剩余](./residue.md)。
-
 ???+ note "证明"
     -   必要性：若方程 $(9)$ 有解 $x_0$，则
-    
+
         $$
         a^{\frac{p-1}{n}}\equiv {\left(x_0^n\right)}^{\frac{p-1}{n}}\equiv 1\pmod p
         $$
@@ -272,40 +267,3 @@ $$
     
         其中 $P(x)$ 是某个整系数多项式，因此由 [定理 5](#定理-5) 可知方程 $(9)$ 有 $n$ 个解。
 
-## 高次同余方程（组）的求解方法
-
-首先我们可以借助 [中国剩余定理](./crt.md) 将求解 **同余方程组** 转为求解 **同余方程**，以及将求解模 **合数**  $m$ 的同余方程转化为求解模 **素数幂次** 的同余方程。之后我们借助 [定理 1](#定理-1) 将求解模 **素数幂次** 的同余方程转化为求解模 **素数** 的同余方程。
-
-结合模素数同余方程的若干定理，我们只需考虑方程
-
-$$
-x^n+\sum_{i=0}^{n-1}a_ix^i\equiv 0\pmod p
-$$
-
-的求法，其中 $p$ 是素数，$n<p$.
-
-我们可以通过将 $x$ 代换为 $x-\dfrac{a_{n-1}}{n}$ 来消去 $x^{n-1}$ 项，从而我们只需考虑方程
-
-$$
-x^n+\sum_{i=0}^{n-2}a_ix^i\equiv 0\pmod p\tag{10}
-$$
-
-的求法，其中 $p$ 是素数，$n<p$.
-
--   若 $n=1$，则求法参见 [线性同余方程](./linear-equation.md)。
--   若 $n=2$，则求法参见 [二次剩余](./quad-residue.md)。
--   若方程 $(10)$ 可化为
-
-    $$
-    x^n\equiv a\pmod p
-    $$
-
-    则求法参见 [k 次剩余](./residue.md)。
-
-## 参考资料
-
-1.  [Congruence Equation -- from Wolfram MathWorld](https://mathworld.wolfram.com/CongruenceEquation.html)
-2.  [Lagrange's theorem (number theory) - Wikipedia](https://en.wikipedia.org/wiki/Lagrange%27s_theorem_%28number_theory%29)
-3.  潘承洞，潘承彪。初等数论。
-4.  冯克勤。初等数论及其应用。
-5.  闵嗣鹤，严士健。初等数论。

@@ -3,8 +3,9 @@
 ???+ note "Wilson 定理"
     对于素数 $p$ 有 $(p-1)!\equiv -1\pmod p$.
     
+
     ???+ note "证明"
-        我们可以利用 [同余方程](./congruence-equation.md#推论-2) 或 [原根](./primitive-root.md) 得到两种简洁的证明，此处略去不表。
+        我们可以利用 [同余方程](./congruence-equation.md#推论-2) 或 原根 得到两种简洁的证明，此处略去不表。
         
         我们选择介绍前置知识较少的一种证明方法：
         
@@ -277,9 +278,3 @@ $$
     ```cpp
     --8<-- "docs/math/code/wilson/wilson_1.cpp"
     ```
-
-**本页面主要译自博文 [Вычисление факториала по модулю](http://e-maxx.ru/algo/modular_factorial) 与其英文翻译版 [Factorial modulo p](https://cp-algorithms.com/algebra/factorial-modulo.html)。其中俄文版版权协议为 Public Domain + Leave a Link；英文版版权协议为 CC-BY-SA 4.0。**
-
-## 参考资料
-
-1.  冯克勤。初等数论及其应用。

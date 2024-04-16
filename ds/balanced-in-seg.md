@@ -1,5 +1,3 @@
-author: Dev-jqe, HeRaNO, huaruoji
-
 ## 常见用途
 
 在算法竞赛中，我们有时需要维护多维度信息。在这种时候，我们经常需要树套树来记录信息。当需要维护前驱，后继，第 $k$ 大，某个数的排名，或者插入删除的时候，我们通常需要使用平衡树来满足我们的需求，即线段树套平衡树。
@@ -93,7 +91,3 @@ int vec_front(int k, int l, int r, int x, int y, int t) {
   return res;
 }
 ```
-
-## 相关算法
-
-面对多维度信息的题目时，如果题目没有要求强制在线，我们还可以考虑 [CDQ 分治](../misc/cdq-divide.md)，或者 [整体二分](../misc/parallel-binsearch.md) 等分治算法，来避免使用高级数据结构，减少代码实现难度。
