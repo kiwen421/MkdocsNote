@@ -28,9 +28,19 @@
 
 ### 实现
 
-![理解二分查找的例子](images/binary_search_1.png)
+=== "<1>"
+    ![理解二分查找的例子](images/binary_search_1.png)
+=== "<2>"
+    ![理解二分查找的例子](images/binary_search_2.png)
+=== "<3>"
+    ![理解二分查找的例子](images/binary_search_3.png)
+=== "<4>"
+    ![理解二分查找的例子](images/binary_search_4.png)
+
+
 
 ```cpp
+// 整数二分
 int binary_search(int L, int R, int key) {
   int ret = -1;  // 未搜索到数据返回-1下标
   int mid;
@@ -48,6 +58,8 @@ int binary_search(int L, int R, int key) {
   return ret;  // 单一出口
 }
 ```
+
+
 
 ???+ note "说明"
     参考 [编译优化 #位运算代替乘法](/lang/optimizations/#%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BB%A3%E6%9B%BF%E4%B9%98%E6%B3%95)，对于 $n$ 是有符号数的情况，当你可以保证 $n\ge 0$​ 时，`n >> 1` 比 `n / 2` 指令数更少。
@@ -71,7 +83,7 @@ int binary_search(int L, int R, int key) {
 
 
 
-### 左值查找
+## 左值查找
 
 当有序序列里有重复的元素，我们想要查找该元素第一次出现的位置的时候，就需要用到左值查找。
 
@@ -102,7 +114,7 @@ int binary_search(int L, int R, int key) {
 
 
 
-### 右值查找
+## 右值查找
 
 与左值查找相反，当有序序列里有重复的元素，我们想要查找该元素第一次出现的位置的时候，就需要用到右值查找。
 
@@ -132,4 +144,9 @@ int binary_search(int L, int R, int key) {
 ```
 
 
+
+## 题单
+
+- [洛谷 P2249](https://www.luogu.com.cn/problem/P2249)
+- [洛谷 P1102](https://www.luogu.com.cn/problem/P1102)
 
