@@ -1,35 +1,28 @@
-#include <algorithm>
-#include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
-int a[103][103];
-int b[103][103];  // 前缀和数组，相当于上文的 sum[]
 
-int main() {
-  int n, m;
-  cin >> n >> m;
-
-  for (int i = 1; i <= n; i++) {
-    for (int j = 1; j <= m; j++) {
-      cin >> a[i][j];
-      b[i][j] =
-          b[i][j - 1] + b[i - 1][j] - b[i - 1][j - 1] + a[i][j];  // 求前缀和
-    }
-  }
-
-  int ans = 1;
-
-  int l = 2;
-  while (l <= min(n, m)) {  // 判断条件
-    for (int i = l; i <= n; i++) {
-      for (int j = l; j <= m; j++) {
-        if (b[i][j] - b[i - l][j] - b[i][j - l] + b[i - l][j - l] == l * l) {
-          ans = max(ans, l);  // 在这里统计答案
-        }
-      }
-    }
-    l++;
-  }
-
-  cout << ans << endl;
-  return 0;
+int n, m, ans=-1e9;
+int f[125][125];
+int main(){
+	cin >> n;
+	
+	for (int i=1; i<=n; i++){
+		for (int j=1; j<=n; j++){
+			cin >> f[i][j];
+			f[i][j] = f[i-1][j] + f[i][j-1] + f[i][j] - f[i-1][j-1];     // 做二维前缀和
+		}
+	}
+	
+	// 枚举所有的可能信， x2,y2, x1,y1 
+	for (int x2=1; x2<=n; x2++){
+		for (int y2=1; y2<=n; y2++){
+			for (int x1=1; x1<x2; x1++){
+				for (int y_1 = 1; y_1<y2; y_1++){
+					ans = max(ans,  f[x2][y2] - f[x1-1][y2] - f[x2][y_1-1] + f[x1-1][y_1-1]);  //求子矩阵 并更新
+				}
+			}
+		}
+	}
+	cout << ans;
 }

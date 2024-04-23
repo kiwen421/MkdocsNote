@@ -1,25 +1,19 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
+const int N = 1e5 + 5;
 
-int N, A[10000], B[10000];
-
+int n, m, l, r;
+int f[N];
 int main() {
-  cin >> N;
-  for (int i = 0; i < N; i++) {
-    cin >> A[i];
-  }
-
-  // 前缀和数组的第一项和原数组的第一项是相等的。
-  B[0] = A[0];
-
-  for (int i = 1; i < N; i++) {
-    // 前缀和数组的第 i 项 = 原数组的 0 到 i-1 项的和 + 原数组的第 i 项。
-    B[i] = B[i - 1] + A[i];
-  }
-
-  for (int i = 0; i < N; i++) {
-    cout << B[i] << " ";
-  }
-
-  return 0;
+	cin >> n;
+	for (int i=1; i<=n; i++){
+		cin >> f[i];
+		f[i] = f[i] + f[i-1];      // 前缀和预处理
+	}
+	cin >> m;
+	for (int i=1; i<=m; i++){
+		cin >> l >> r;
+		cout << f[r] - f[l-1] << endl; // 求解   
+	}
 }

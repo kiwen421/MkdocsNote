@@ -36,7 +36,7 @@ bool check(int x){
 }
 // 二分答案 最小值
 int binary_answer(int L, int R){
-  int ret = -1;
+  int ret;
   int mid;
   while (L <= R){
     mid = L + (R-L)>>1;
@@ -50,7 +50,7 @@ int binary_answer(int L, int R){
 
 // 二分答案 最大值
 int binary_answer(int L, int R){
-  int ret = -1;
+  int ret;
   int mid;
   while (L <= R){
     mid = L + (R-L)>>1;
@@ -66,7 +66,7 @@ int binary_answer(int L, int R){
 // 实数二分模版
 double binary_answer(double L, double R){
   const double eps = 1e-7; // 10的-7次方
-  double ret = -1;
+  double ret;
   double mid;
   while (R - L > eps){
     mid = (L+R)/2;
@@ -181,4 +181,10 @@ double binary_answer(double L, double R){
 ???note "参考代码"
     ```cpp
     --8<-- "docs/basic/code/binary_answer/luogu_P3743.cpp"
+    ```
+
+- [洛谷 P1824 进击的奶牛](https://www.luogu.com.cn/problem/P1824)
+???note "参考代码"
+    ```cpp
+    --8<-- "docs/basic/code/binary_answer/luogu_P1824.cpp"
     ```

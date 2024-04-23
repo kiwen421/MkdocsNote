@@ -147,6 +147,6 @@ int binary_search(int L, int R, int key) {
 
 ## 题单
 
-- [洛谷 P2249](https://www.luogu.com.cn/problem/P2249)
-- [洛谷 P1102](https://www.luogu.com.cn/problem/P1102)
+- [洛谷 P2249 查找](https://www.luogu.com.cn/problem/P2249)
+- [洛谷 P1102 A-B 数对](https://www.luogu.com.cn/problem/P1102)
 
