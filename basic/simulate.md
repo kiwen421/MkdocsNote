@@ -2,7 +2,7 @@
 
 ## 简介
 
-模拟就是用计算机来模拟题目中要求的操作。
+模拟就是用计算机来模拟题目中要求的操作或者模拟生活中的规律（例如高精度算法）来得到最终答案。
 
 模拟题目通常具有码量大、操作多、思路繁复的特点。由于它码量大，经常会出现难以查错的情况，如果在考试中写错是相当浪费时间的。
 
@@ -20,30 +20,26 @@
 
 ## 例题详解
 
-???+ note "[Climbing Worm](https://open.kattis.com/problems/climbingworm)"
-    一只长度不计的蠕虫位于 $n$ 英寸深的井的底部。它每次向上爬 $u$ 英寸，但是必须休息一次才能再次向上爬。在休息的时候，它滑落了 $d$ 英寸。之后它将重复向上爬和休息的过程。蠕虫爬出井口需要至少爬多少次？如果蠕虫爬完后刚好到达井的顶部，我们也设作蠕虫已经爬出井口。
+???+ note "[洛谷 P2669 金币](https://www.luogu.com.cn/problem/P2669)"
+    国王将金币作为工资，发放给忠诚的骑士。第一天，骑士收到一枚金币；之后两天（第二天和第三天），每天收到两枚金币；之后三天（第四、五、六天），每天收到三枚金币；之后四天（第七、八、九、十天），每天收到四枚金币……；这种工资发放模式会一直这样延续下去：当连续 $n$ 天每天收到 $n$ 枚金币后，骑士会在之后的连续 $n+1$ 天里，每天收到 $n+1$ 枚金币。
+    
+
+    请计算在前 $k$ 天里，骑士一共获得了多少金币。
 
 ??? note "解题思路"
-    直接使用程序模拟蠕虫爬井的过程就可以了。用一个循环重复蠕虫的爬井过程，当攀爬的长度超过或者等于井的深度时跳出。
+    模拟循环$k$天，求出每天需要收到的金币，累加起来即可。
 
 ??? note "参考代码"
-    === "C++"
-        ```cpp
-        --8<-- "docs/basic/code/simulate/simulate_1.cpp"
-        ```
-    
-    === "Python"
-        ```python
-        --8<-- "docs/basic/code/simulate/simulate_1.py"
-        ```
+    ```cpp
+    --8<-- "docs/basic/code/simulate/simulate_1.cpp"
+    ```
 
-    === "Java"
-        ```java
-        --8<-- "docs/basic/code/simulate/simulate_1.java"
-        ```
+
 
 ## 习题
 
--   [「NOIP2014」生活大爆炸版石头剪刀布 - Universal Online Judge](https://uoj.ac/problem/15)
--   [「OpenJudge 3750」魔兽世界](http://bailian.openjudge.cn/practice/3750/)
--   [「SDOI2010」猪国杀 - LibreOJ](https://loj.ac/problem/2885)
+-   [洛谷 P1876 开灯](https://www.luogu.com.cn/problem/P1876)
+-   [洛谷 P1420 最长连号](https://www.luogu.com.cn/problem/P1420)
+-   [洛谷 P1534 不高兴的津津](https://www.luogu.com.cn/problem/P1534)
+-   [洛谷 P8711 整除序列](https://www.luogu.com.cn/problem/P8711)
+-   [洛谷 P8822 课程报名](https://www.luogu.com.cn/problem/P8822)

@@ -1,10 +1,8 @@
-author: Early0v0, frank-xjh, Great-designer, ksyx, qiqistyle, Tiphereth-A , Saisyc, shuzhouliu, Xeonacid, xyf007
-
 本页面将简要介绍枚举算法。
 
 ## 简介
 
-枚举（英语：Enumerate）是基于已有知识来猜测答案的一种问题求解策略。
+枚举（英语：Enumerate）是基于已有条件来猜测答案的一种问题求解策略。
 
 枚举的思想是不断地猜测，从可能的集合中一一尝试，然后再判断题目的条件是否成立。
 
@@ -28,105 +26,40 @@ author: Early0v0, frank-xjh, Great-designer, ksyx, qiqistyle, Tiphereth-A , Sais
 
 ## 例题
 
-以下是一个使用枚举解题与优化枚举范围的例子。
+???+note "[洛谷 P3836 GESP 百鸡问题](https://www.luogu.com.cn/problem/B3836)"
 
-??? 例题
-    一个数组中的数互不相同，求其中和为 $0$ 的数对的个数。
+    每只公鸡 5 元，每只母鸡 3 元，每 3 只小鸡 1 元；现在有 100 元，买了 100 只鸡，共有多少种方案？
+    
+    小明很喜欢这个故事，他决定对这个问题进行扩展，并使用编程解决：如果每只公鸡 $x$ 元，每只母鸡 $y$ 元，每 $z$ 只小鸡 $1$ 元；现在有 $n$ 元，买了 $m$ 只鸡，共有多少种方案？
+
+
 
 ??? note "解题思路"
-    枚举两个数的代码很容易就可以写出来。
-    
-    === "C++"
-        ```cpp
-        for (int i = 0; i < n; ++i)
-          for (int j = 0; j < n; ++j)
-            if (a[i] + a[j] == 0) ++ans;
-        ```
-    
-    === "Python"
-        ```python
-        for i in range(n):
-            for j in range(n):
-                if a[i] + a[j] == 0:
-                    ans += 1
-        ```
-    
-    === "Java"
-        ```java
-        for (int i = 0; i < n; ++i)
-          for (int j = 0; j < n; ++j)
-            if (a[i] + a[j] == 0) ++ans;
-        ```
-    
-    来看看枚举的范围如何优化。由于题中没要求数对是有序的，答案就是有序的情况的两倍（考虑如果 `(a, b)` 是答案，那么 `(b, a)` 也是答案）。对于这种情况，只需统计人为要求有顺序之后的答案，最后再乘上 $2$ 就好了。
-    
-    不妨要求第一个数要出现在靠前的位置。代码如下：
-    
-    === "C++"
-        ```cpp
-        for (int i = 0; i < n; ++i)
-          for (int j = 0; j < i; ++j)
-            if (a[i] + a[j] == 0) ++ans;
-        ```
-    
-    === "Python"
-        ```python
-        for i in range(n):
-            for j in range(i):
-                if a[i] + a[j] == 0:
-                    ans += 1
-        ```
-    
-    === "Java"
-        ```java
-        for (int i = 0; i < n; ++i)
-            for (int j = 0; j < i; ++j)
-                if (a[i] + a[j] == 0) ++ans;
-        ```
-    
-    不难发现这里已经减少了 $j$ 的枚举范围，减少了这段代码的时间开销。
-    
-    我们可以在此之上进一步优化。
-    
-    两个数是否都一定要枚举出来呢？枚举其中一个数之后，题目的条件已经确定了其他的要素（另一个数）的条件，如果能找到一种方法直接判断题目要求的那个数是否存在，就可以省掉枚举后一个数的时间了。较为进阶地，在数据范围允许的情况下，我们可以使用桶[^1]记录遍历过的数。
-    
-    === "C++"
-        ```cpp
-        bool met[MAXN * 2 + 1];
-        memset(met, 0, sizeof(met));
-        for (int i = 0; i < n; ++i) {
-          if (met[MAXN - a[i]]) ++ans;
-          met[MAXN + a[i]] = true;
-        }
-        ```
-    
-    === "Python"
-        ```python
-        met = [False] * (MAXN * 2 + 1)
-        for i in range(n):
-            if met[MAXN - a[i]]:
-                ans += 1
-            met[a[i] + MAXN] = True
-        ```
-    
-    === "Java"
-        ```java
-        boolean[] met = new boolean[MAXN * 2 + 1];
-        for (int i = 0; i < n; ++i) {
-            if (met[MAXN - a[i]]) ++ans;
-            met[MAXN + a[i]] = true;
-        }
-        ```
+    通过观察可以发现， 公鸡的数量范围是 $[0, m]$ 只；母鸡的数量范围是$[0, m]$只；小鸡的数量范围是$[0, m]$​​。我们可以枚举每个可能性。
 
-### 复杂度分析
+    ```cpp
+    --8<-- "docs/basic/code/enumerate/luogu_B3836.cpp"
+    ```
+    上一个写法是暴力写法，时间复杂度为$O(n^3)$大概率会超时，但其实我们可以发现，我们假设枚举公鸡的数量为$i$；母鸡的数量范围是$[0, m-i]$，假设为$j$；小鸡的数量则是$m-i-j$。
+    ```cpp
+    --8<-- "docs/basic/code/enumerate/luogu_B3836_1.cpp"
+    ```
+    当然还有一些局部小优化，例如：小鸡的数量一定是$z$的倍数，否则不符合要求，那么就可以枚举小鸡的数量，来减少循环次数。 
+    ```cpp
+    --8<-- "docs/basic/code/enumerate/luogu_B3836_2.cpp"
+    ```
 
--   时间复杂度分析：对 $a$ 数组遍历了一遍就能完成题目要求，当 $n$ 足够大的时候时间复杂度为 $O(n)$。
--   空间复杂度分析：$O(n+\max\{|x|:x\in a\})$。
 
 ## 习题
 
--   [2811: 熄灯问题 - OpenJudge](http://bailian.openjudge.cn/practice/2811/)
+- [洛谷 P1614 爱与愁的心痛](https://www.luogu.com.cn/problem/P1614)
 
-## 脚注
+- [洛谷 P1089 津津的储蓄计划](https://www.luogu.com.cn/problem/P1089)
 
-[^1]: [桶排序](../basic/bucket-sort.md) 以及 [主元素问题](../misc/main-element.md#桶计数做法) 以及 [Stack Overflow 上对桶数据结构的讲解](https://stackoverflow.com/questions/42399355/what-is-a-bucket-or-double-bucket-data-structure)（英文）
+- [洛谷 P8828 直角三角形](https://www.luogu.com.cn/problem/P8828)
+
+- [洛谷 B3750 幸运素数](https://www.luogu.com.cn/problem/B3750)
+  
+- [洛谷 P8680 特别数的和](https://www.luogu.com.cn/problem/P8680)
+
+- [洛谷 P2141 珠心算测验](https://www.luogu.com.cn/problem/P2141)
