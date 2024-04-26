@@ -184,7 +184,7 @@ double binary_answer(double L, double R){
     ```
 
 - [洛谷 P1824 进击的奶牛](https://www.luogu.com.cn/problem/P1824)
-  ???note "参考代码"
+???note "参考代码"
     ```cpp
     --8<-- "docs/basic/code/binary_answer/luogu_P1824.cpp"
     ```
