@@ -66,14 +66,13 @@ int binary_answer(int L, int R){
 // 实数二分模版
 double binary_answer(double L, double R){
   const double eps = 1e-7; // 10的-7次方
-  double ret;
   double mid;
   while (R - L > eps){
     mid = (L+R)/2;
     if (check(mid)){ L = mid;  
     } else R = mid;
   }  
-  return ret;
+  return mid;
 }
 ```
 

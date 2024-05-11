@@ -17,7 +17,6 @@ bool check(int x){
 			ans = 0;
 			i--;     
 		} 
-		if (cnt < 0) return 0;
 	}
 	return 1;
 }
