@@ -57,7 +57,7 @@
     ```
 
 ## 优化方案
-    
+
 ### 路径压缩合并
 
 将该节点到根节点路径上的所有节点直接连接到根节点上，从而降低了后续查找操作的复杂度。
@@ -200,10 +200,22 @@ $A(m, n) = \begin{cases}n+1&\text{if }m=0\\A(m-1,1)&\text{if }m>0\text{ and }n=0
 
 ## 习题
 
-[「NOI2015」程序自动分析](https://uoj.ac/problem/127)
+[「洛谷」P3367 并查集](https://www.luogu.com.cn/problem/P3367?contestId=171518)
 
-[「JSOI2008」星球大战](https://www.luogu.com.cn/problem/P1197)
+[洛谷 P2256 一中校运会之百米跑](https://www.luogu.com.cn/problem/P2256?contestId=171518)
 
-[「NOI2001」食物链](https://www.luogu.com.cn/problem/P2024)
+[P8654 [蓝桥杯 2017 国 C] 合根植物](https://www.luogu.com.cn/problem/P8654?contestId=171518)
 
-[「NOI2002」银河英雄传说](https://www.luogu.com.cn/problem/P1196)
+[P8403 [CCC2022 J4] Good Groups](https://www.luogu.com.cn/problem/P8403?contestId=171518)
+
+[P1536 村村通](https://www.luogu.com.cn/problem/P1536?contestId=171518)
+
+[P2024 [NOI2001] 食物链](https://www.luogu.com.cn/problem/P2024?contestId=171518)
+
+[P3144 [USACO16OPEN] Closing the Farm S](https://www.luogu.com.cn/problem/P3144?contestId=171518)
+
+[P3958 [NOIP2017 提高组] 奶酪](https://www.luogu.com.cn/problem/P3958?contestId=171518)
+
+[P8686 [蓝桥杯 2019 省 A] 修改数组](https://www.luogu.com.cn/problem/P8686?contestId=171518)
+
+[P2658 汽车拉力比赛](https://www.luogu.com.cn/problem/P2658?contestId=171518)
